@@ -1,0 +1,22 @@
+[
+  {
+    "id": "booking_1772471577632",
+    "userId": "user_123",
+    "carId": "car_001",
+    "startDate": "2026-03-03T00:00:00.000Z",
+    "endDate": "2026-03-05T00:00:00.000Z",
+    "status": "pending",
+    "totalAmount": 450,
+    "createdAt": "2026-03-02T17:12:57.632Z"
+  },
+  {
+    "id": "booking_1772473108240",
+    "userId": "user_001",
+    "carId": "car_002",
+    "startDate": "2026-03-03T00:00:00.000Z",
+    "endDate": "2026-03-05T00:00:00.000Z",
+    "status": "pending",
+    "totalAmount": 240,
+    "createdAt": "2026-03-02T17:38:28.240Z"
+  }
+]

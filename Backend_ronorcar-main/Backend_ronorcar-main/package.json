@@ -1,0 +1,40 @@
+{
+  "name": "backend-node-rentalcar",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "app.js",
+    "dev": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "seed": "node prisma/seed.js"
+  },
+  "prisma": {
+    "seed": "node prisma/seed.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@paypal/checkout-server-sdk": "^1.0.3",
+    "@prisma/client": "^5.14.0",
+    "bcrypt": "^5.1.1",
+    "body-parser": "^1.20.2",
+    "console-ninja": "^1.0.0",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "express-session": "^1.18.0",
+    "jsonwebtoken": "^9.0.2",
+    "method-override": "^3.0.0",
+    "mongoose": "^8.4.0",
+    "morgan": "^1.10.0",
+    "stripe": "^15.10.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.2",
+    "prisma": "^5.14.0"
+  }
+}

@@ -1,0 +1,38 @@
+[
+  {
+    "id": "admin_001",
+    "email": "admin@rentalcar.com",
+    "password": "$2b$10$AFsSRuR2NRarGXfVH5Zcc.SyeLCejeKsbdWjG5FTYqE9RA8FKNygy",
+    "firstName": "Admin",
+    "lastName": "User",
+    "isAdmin": true,
+    "isNormalUser": false,
+    "emailVerified": true,
+    "isActive": true,
+    "createdAt": "2026-03-02T15:12:39.144Z"
+  },
+  {
+    "id": "user_001",
+    "email": "user@rentalcar.com",
+    "password": "$2b$10$I9SCggWtjvb0JVyHkqi8KuRNHZRXRtGNN8wgzs6xX7TaJe5NwOs5C",
+    "firstName": "Regular",
+    "lastName": "User",
+    "isAdmin": false,
+    "isNormalUser": true,
+    "emailVerified": true,
+    "isActive": true,
+    "createdAt": "2026-03-02T15:12:39.195Z"
+  },
+  {
+    "id": "user_1772464676803",
+    "email": "anas@gmail.com",
+    "password": "$2b$10$ZvHfzQVfTEhcwhc7Lbo7nuEyr8hnvpKRkHDWG4mfXKcdCAQYC55SG",
+    "firstName": "anas",
+    "lastName": "tahir",
+    "isAdmin": false,
+    "isNormalUser": true,
+    "emailVerified": false,
+    "createdAt": "2026-03-02T15:17:56.803Z",
+    "lastLogin": null
+  }
+]
