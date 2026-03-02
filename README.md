@@ -11,33 +11,67 @@ A modern, full-stack car rental application built with React.js and Node.js, fea
 - **Smooth Animations**: Interactive hover effects and transitions
 - **Gradient Backgrounds**: Beautiful white to blue gradients throughout
 
-### 🔐 **Authentication System**
-- **User Registration & Login**: Secure authentication with JWT tokens
-- **Role-Based Access**: Admin and user roles with different permissions
+### **🔐 **Authentication System**
+- **User Registration & Login**: Secure authentication with JWT tokens (7-day expiry)
+- **Role-Based Access**: Admin and user roles with granular permissions
 - **Protected Routes**: Secure dashboard access for authenticated users
 - **Session Management**: HTTP-only cookies for enhanced security
+- **Profile Management**: Comprehensive user profiles with avatars and preferences
+- **Social Features**: Saved locations, favorite cars, booking history
 
-### 🚗 **Car Rental Features**
-- **Browse Cars**: View available vehicles with detailed information
-- **Advanced Search**: Filter by type, location, dates, and time
-- **Real-time Availability**: Check car availability for selected dates
-- **Booking Management**: Create, view, and manage reservations
-- **Payment Integration**: Multiple payment options support
+### **🚗 **Car Rental Features**
+- **Browse Cars**: View available vehicles with detailed information and images
+- **Advanced Search**: Filter by type, location, dates, and time with React Select
+- **Real-time Availability**: Check car availability for selected dates via MongoDB
+- **Booking Management**: Create, view, and manage reservations with status tracking
+- **Payment Integration**: Multiple payment options (Stripe & PayPal)
+- **Review System**: User ratings and reviews for vehicles
+- **Maintenance Tracking**: Car maintenance schedules and status
 
-### 👥 **User Dashboard**
-- **Personal Profile**: Manage user information and preferences
-- **Reservation History**: View past and current bookings
-- **Calendar Integration**: Visual schedule of rental periods
-- **Settings**: Account customization and notification preferences
+### **👥 **User Dashboard**
+- **Personal Profile**: Manage user information, avatar, and preferences
+- **Reservation History**: View past and current bookings with detailed status
+- **Calendar Integration**: Visual schedule of rental periods using FullCalendar
+- **Settings**: Account customization, notification preferences, payment methods
+- **Loyalty Program**: Points system and subscription plans
+- **Saved Locations**: Quick access to frequently used pickup locations
+- **Favorite Cars**: Personalized vehicle recommendations
 
-### 🛠️ **Admin Dashboard**
-- **User Management**: View and manage all registered users
-- **Fleet Management**: Add, edit, and remove vehicles
-- **Reservation Oversight**: Monitor all bookings and availability
-- **Analytics Dashboard**: Business insights and statistics
-- **System Settings**: Configure application parameters
+### **🛠️ **Admin Dashboard**
+- **User Management**: View and manage all registered users with permissions
+- **Fleet Management**: Add, edit, and remove vehicles with maintenance tracking
+- **Reservation Oversight**: Monitor all bookings and availability in real-time
+- **Analytics Dashboard**: Business insights and statistics with charts
+- **System Settings**: Configure application parameters and permissions
+- **Payment Management**: Transaction monitoring and refund processing
+- **Notification System**: User communication and alerts
+
+### **💳 **Payment System**
+- **Stripe Integration**: Secure credit card processing
+- **PayPal Support**: Alternative payment method
+- **Transaction History**: Complete payment tracking
+- **Refund Management**: Automated and manual refund processing
+- **Payment Methods**: Multiple saved payment options per user
+- **Invoice Generation**: Automatic invoice creation with PDF export
+
+### **📊 **Database Models**
+- **User**: Comprehensive user profiles with roles and permissions
+- **Car**: Vehicle management with availability and maintenance
+- **Reservation**: Booking system with status tracking
+- **Transaction**: Payment processing and history
+- **Review**: User ratings and feedback system
+- **Notification**: User communication and alerts
+- **PaymentMethod**: Saved payment options
+- **Insurance**: Insurance types and coverage options
+- **Maintenance**: Vehicle maintenance scheduling
 
 ## 🏗️ Technical Architecture
+
+### **Database (MongoDB)**
+- **Provider**: MongoDB Atlas (Cloud)
+- **ORM**: Prisma with MongoDB adapter
+- **Schema**: Comprehensive rental car management system
+- **Models**: User, Car, Reservation, Transaction, Review, and more
 
 ### **Frontend (React.js)**
 ```
@@ -81,6 +115,9 @@ Backend_ronorcar-main/
 │   ├── cars.js             # Car endpoints
 │   ├── reservations.js     # Booking endpoints
 │   └── users.js            # User endpoints
+├── prisma/                 # Database configuration
+│   ├── schema.prisma       # Database schema
+│   └── seed.js             # Database seeding
 ├── lib/                   # Database utilities
 │   └── prisma.js          # Database connection
 ├── middleware/            # Express middleware
@@ -144,9 +181,24 @@ Backend_ronorcar-main/
    
    **Backend (.env)**
    ```env
+   # Database
+   DATABASE_URL="mongodb+srv://username:password@cluster.mongodb.net/rentalcar?retryWrites=true&w=majority"
+   
+   # Server
    PORT=5000
-   JWT_SECRET_KEY=your_jwt_secret_key
-   NODE_ENV=development
+   CLIENT_URL=http://localhost:3000
+   
+   # JWT
+   JWT_SECRET=your_jwt_secret_key_here
+   JWT_EXPIRE=7d
+   
+   # PayPal (Sandbox)
+   PAYPAL_CLIENT_ID=your_paypal_client_id
+   PAYPAL_CLIENT_SECRET=your_paypal_client_secret
+   
+   # Stripe
+   STRIPE_SECRET_KEY=sk_test_your_stripe_secret_key_here
+   STRIPE_PUBLISHABLE_KEY=pk_test_your_stripe_publishable_key_here
    ```
 
    **Frontend (.env)**
@@ -154,7 +206,17 @@ Backend_ronorcar-main/
    REACT_APP_API_URL=http://localhost:5000/api
    ```
 
-5. **Start the Application**
+5. **Database Setup**
+   
+   **Initialize Database**
+   ```bash
+   cd Backend_ronorcar-main
+   npx prisma generate
+   npx prisma db push
+   npm run seed  # Optional: Seed database with sample data
+   ```
+
+6. **Start the Application**
    
    **Start Backend Server**
    ```bash
@@ -280,26 +342,45 @@ Edit `src/dist/styles.css`:
 ## 📊 Technologies Used
 
 ### **Frontend Technologies**
-- **React.js**: JavaScript library for UI
-- **React Router**: Client-side routing
-- **Ant Design**: UI component library
-- **TailwindCSS**: Utility-first CSS framework
-- **Axios**: HTTP client for API calls
-- **Material-UI**: Date and time pickers
+- **React.js**: JavaScript library for UI (v18.3.1)
+- **React Router**: Client-side routing (v6.23.1)
+- **Ant Design**: UI component library (v5.17.4)
+- **Material-UI (MUI)**: Advanced components (v5.15.17)
+- **TailwindCSS**: Utility-first CSS framework (v3.4.3)
+- **Axios**: HTTP client for API calls (v1.7.2)
+- **Redux Toolkit**: State management (v2.2.5)
+- **Styled Components**: CSS-in-JS styling (v6.1.11)
+- **React Select**: Advanced select components (v5.8.0)
+- **FullCalendar**: Calendar components (v6.1.13)
+- **Chart.js & Recharts**: Data visualization
+- **Stripe React**: Payment integration (v2.7.1)
+- **FontAwesome**: Icon library (v6.5.2)
 
 ### **Backend Technologies**
 - **Node.js**: JavaScript runtime
-- **Express.js**: Web framework
-- **Prisma**: Database ORM
-- **JWT**: Authentication tokens
-- **bcrypt**: Password hashing
+- **Express.js**: Web framework (v4.19.2)
+- **Prisma**: Database ORM with MongoDB (v5.14.0)
+- **MongoDB**: NoSQL database (MongoDB Atlas)
+- **JWT**: Authentication tokens (v9.0.2)
+- **bcrypt**: Password hashing (v5.1.1)
+- **Stripe**: Payment processing (v15.10.0)
+- **PayPal SDK**: Alternative payment option
+- **Morgan**: HTTP request logger
 - **CORS**: Cross-origin resource sharing
+- **Cookie Parser**: Cookie handling
+
+### **Database & Storage**
+- **MongoDB Atlas**: Cloud-hosted MongoDB
+- **Prisma ORM**: Type-safe database access
+- **Mongoose**: MongoDB object modeling (v8.4.0)
 
 ### **Development Tools**
 - **Git**: Version control
 - **npm**: Package management
 - **PowerShell**: Command line (Windows)
 - **VS Code**: Code editor
+- **Nodemon**: Development server auto-restart
+- **ESLint**: Code linting and formatting
 
 ## 🐛 Troubleshooting
 
@@ -312,18 +393,22 @@ Edit `src/dist/styles.css`:
 
 #### **Backend API Not Responding**
 - Ensure Node.js server is running on port 5000
-- Check database connection
-- Verify API endpoints in browser
+- Check MongoDB Atlas connection string
+- Verify Prisma client is generated
+- Check environment variables in .env file
+
+#### **Database Connection Issues**
+- Verify MongoDB Atlas credentials
+- Check IP whitelist in MongoDB Atlas
+- Ensure DATABASE_URL is correctly formatted
+- Run `npx prisma generate` to update client
+- Run `npx prisma db push` to sync schema
 
 #### **Authentication Issues**
 - Clear browser cookies and cache
-- Check JWT secret key in .env file
-- Verify token expiration settings
-
-#### **Database Issues**
-- Check if database files exist
-- Verify file permissions
-- Restart backend server
+- Check JWT_SECRET in .env file
+- Verify token expiration settings (7d default)
+- Ensure MongoDB user collection exists
 
 ### **Performance Optimization**
 - Use React.memo for component optimization
