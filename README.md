@@ -438,8 +438,9 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 ## 📞 Support
 
 For support and questions:
+
 - **GitHub Issues**: Create an issue in the repository
-- **Email**: [Your email address]
+- **Email**: anasstahir4@gmail.com
 - **Documentation**: Refer to this README file
 
 ## 🎉 Acknowledgments
