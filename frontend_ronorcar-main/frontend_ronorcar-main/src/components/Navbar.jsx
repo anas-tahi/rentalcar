@@ -5,7 +5,7 @@ import { useContext, useRef, useState, useEffect } from "react";
 import MenuItems from "./MenuItems";
 import { AuthContext } from "../Context/authContext";
 import logo from "../images/Default/DefaultAvatar.jpg";
-import { Space, Button, Dropdown, Menu, Badge } from "antd";
+import { Space, Button, Dropdown, Badge } from "antd";
 import { useTranslation } from "react-i18next";
 import {
   FundOutlined,
