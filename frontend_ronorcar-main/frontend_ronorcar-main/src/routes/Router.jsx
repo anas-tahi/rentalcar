@@ -17,7 +17,6 @@ import ProtectedRoute from "../components/ProtectedRoute";
 import AdminProtectedRoute from "../components/AdminProtectedRoute"; // Import AdminProtectedRoute
 import UserProtectedRoute from "../components/UserProtectedRoute"; // Import UserProtectedRoute
 import NotFound from "../components/NotFound";
-import BookingPage from "../Pages/BookingPage";
 import UnifiedBooking from "../Pages/UnifiedBooking";
 import AllCarsPage from "../Pages/AllCarPage";
 import RentCarPage from "../Pages/RentCarPage";

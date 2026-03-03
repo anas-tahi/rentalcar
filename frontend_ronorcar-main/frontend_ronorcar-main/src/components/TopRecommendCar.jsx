@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Container } from "@mui/material";
 import CustomCarRow from "./CustomCarRow";
-import { useNavigate } from "react-router-dom";
 
 const TopRecommendCar = () => {
   const [topCars, setTopCars] = useState([]);

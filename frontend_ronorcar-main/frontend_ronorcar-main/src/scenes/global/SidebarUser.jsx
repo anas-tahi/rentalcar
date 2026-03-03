@@ -6,8 +6,6 @@ import {
   CarOutlined,
   CheckCircleFilled,
   CalendarOutlined,
-  BellOutlined,
-  HeartOutlined,
   CustomerServiceOutlined,
   SettingOutlined,
   MenuFoldOutlined,
@@ -15,10 +13,9 @@ import {
   LogoutOutlined,
 } from "@ant-design/icons";
 import { Tooltip } from "antd";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import logo from "../../images/Default/DefaultAvatar.jpg";
 import { useTheme } from "@mui/material/styles";
-import apiRequest from "../../Api/apiRequest";
 import "./Sidebar.css"; // Import your CSS file
 import { AuthContext } from "../../Context/authContext";
 const { Sider } = Layout;
@@ -83,7 +80,6 @@ const SidebarUser = () => {
 
   const [collapsed, setCollapsed] = useState(false);
   const [selectedKey, setSelectedKey] = useState("dashboard");
-  const navigate = useNavigate();
   const toggleCollapsed = () => {
     setCollapsed(!collapsed);
   };

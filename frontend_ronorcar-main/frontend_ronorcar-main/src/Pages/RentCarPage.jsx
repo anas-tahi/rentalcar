@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, useLocation, useNavigate } from 'react-router-dom';
+import { useParams, useLocation } from 'react-router-dom';
 import { Container, Typography, Box, Paper } from '@mui/material';
 import { motion } from 'framer-motion';
 import CarRentalForm from '../components/CarRentalForm';
@@ -8,7 +8,6 @@ import { carsAPI } from '../Api/cars';
 const RentCarPage = () => {
   const { carId } = useParams();
   const location = useLocation();
-  const navigate = useNavigate();
   const [car, setCar] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);

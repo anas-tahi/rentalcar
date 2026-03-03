@@ -6,7 +6,6 @@ import {
   DatePicker,
   Button,
   Upload,
-  message,
   Select,
   Modal,
 } from "antd";

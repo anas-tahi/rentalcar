@@ -25,7 +25,6 @@ const Calendar = () => {
   const colors = tokens(theme.palette.mode);
   const boxRef = useRef(null);
   const [currentEvents, setCurrentEvents] = useState([]);
-  const [formTitleVisible, setFormTitleVisible] = useState(false);
   const [isEventFormVisible, setIsEventFormVisible] = useState(false);
   const [isEditFormVisible, setIsEditFormVisible] = useState(false);
   const [EventSelected, setEventSelected] = useState(null);
@@ -33,7 +32,6 @@ const Calendar = () => {
   const [selectedDate, setSelectedDate] = useState(null);
 
   const handleDateClick = (selected) => {
-    setFormTitleVisible(true);
     setIsEventFormVisible(true);
     setIsEditFormVisible(false);
     setSelectedDate(selected);
@@ -43,7 +41,6 @@ const Calendar = () => {
     if (boxRef.current && !boxRef.current.contains(event.target)) {
       setIsEventFormVisible(false);
       setIsEditFormVisible(false);
-      setFormTitleVisible(false);
       setTitle("");
     }
   };
@@ -64,21 +61,15 @@ const Calendar = () => {
         allDay: selectedDate.allDay,
       });
       setIsEventFormVisible(false);
-      setFormTitleVisible(false);
       setTitle("");
     }
   };
 
   const handleUpdateEvent = () => {
     if (selectedDate && title && EventSelected) {
-      const updatedEvent = {
-        ...EventSelected.event.toPlainObject(),
-        title: title,
-      };
       EventSelected.event.setProp("title", title); // Update the event's title
       console.log("Event Updated:", title);
       setIsEditFormVisible(false);
-      setFormTitleVisible(false);
       setTitle("");
       setEventSelected(null); // Clear selected event after update
     }
@@ -234,7 +225,6 @@ const Calendar = () => {
                 className="fas fa-times close-icon"
                 onClick={() => {
                   setIsEventFormVisible(false);
-                  setFormTitleVisible(false);
                   setTitle("");
                 }}
               />
@@ -362,7 +352,6 @@ const Calendar = () => {
               }}
               onClick={() => {
                 setIsEventFormVisible(false);
-                setFormTitleVisible(false);
                 setIsEditFormVisible(false);
                 setTitle("");
               }}

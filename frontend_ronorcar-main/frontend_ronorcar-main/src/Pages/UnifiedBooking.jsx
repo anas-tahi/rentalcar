@@ -32,8 +32,6 @@ import {
   CheckCircleOutlined,
   DollarCircleOutlined,
   SearchOutlined,
-  StarOutlined,
-  FilterOutlined,
   HeartOutlined,
   ShareAltOutlined
 } from '@ant-design/icons';
@@ -208,6 +206,7 @@ const UnifiedBooking = () => {
 
   const handleSelectCar = (car) => {
     setSelectedCar(car);
+    setShowPayment(true);
     
     // Calculate total amount
     const days = searchForm.endDate.diff(searchForm.startDate, 'day');
@@ -701,7 +700,7 @@ const UnifiedBooking = () => {
             )}
 
             {/* Selected Car & Payment */}
-            {selectedCar && bookingData && (
+            {selectedCar && bookingData && showPayment && (
               <Card className="shadow-lg rounded-xl mt-8">
                 <Title level={3} className="text-blue-700 mb-6">
                   <CheckCircleOutlined className="mr-2" />

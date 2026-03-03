@@ -23,7 +23,6 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import dayjs from 'dayjs';
 import { motion } from 'framer-motion';
 import { carsAPI } from '../../Api/cars';
-import { bookingsAPI } from '../../Api/bookings';
 
 // Spanish cities for pickup locations
 const spanishCities = [
