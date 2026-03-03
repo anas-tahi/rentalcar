@@ -36,7 +36,7 @@ function Home() {
 
   useEffect(() => {}, [currentUser]);
 
-  // If user is NOT logged in, show normal home page
+  // If user is NOT logged in, show streamlined home page
   if (!currentUser) {
     return (
       <>
@@ -44,12 +44,6 @@ function Home() {
         <Hero />
         <SearchCarType onSearch={handleSearch} />
         <CarListPage searchParams={searchParams} />
-        <TopRecommendCar />
-        <InfiniteScroll />
-        <ChooseUs />
-        <Testimonials />
-        <Faq />
-        <BlogsPart />
         <Footer />
       </>
     );
@@ -137,8 +131,8 @@ function Home() {
               }} />
               <h3 style={{
                 color: "var(--accent-yellow)",
-                marginBottom: "15px",
-                fontSize: "1.4rem",
+                marginBottom: "12px",
+                fontSize: "1.3rem",
                 fontWeight: "700",
                 position: "relative",
                 zIndex: 1
@@ -147,10 +141,10 @@ function Home() {
               </h3>
               <p style={{
                 color: "var(--text-primary)",
-                lineHeight: "1.6",
-                fontSize: "1rem"
+                lineHeight: "1.5",
+                fontSize: "0.95rem"
               }}>
-                Explore our premium fleet and find your perfect ride.
+                Explore our premium fleet
               </p>
             </div>
 
@@ -159,7 +153,7 @@ function Home() {
               style={{
                 background: "rgba(255, 215, 0, 0.1)",
                 border: "2px solid var(--accent-yellow)",
-                padding: "40px",
+                padding: "35px 25px",
                 borderRadius: "20px",
                 boxShadow: "var(--shadow-gold)",
                 transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
@@ -168,7 +162,7 @@ function Home() {
                 overflow: "hidden"
               }}
               onMouseEnter={(e) => {
-                e.target.style.transform = "translateY(-10px) scale(1.05)";
+                e.target.style.transform = "translateY(-8px) scale(1.05)";
                 e.target.style.boxShadow = "0 15px 40px rgba(255, 215, 0, 0.6)";
                 e.target.style.borderColor = "var(--bright-yellow)";
               }}
@@ -190,8 +184,8 @@ function Home() {
               }} />
               <h3 style={{
                 color: "var(--accent-yellow)",
-                marginBottom: "15px",
-                fontSize: "1.4rem",
+                marginBottom: "12px",
+                fontSize: "1.3rem",
                 fontWeight: "700",
                 position: "relative",
                 zIndex: 1
@@ -200,63 +194,10 @@ function Home() {
               </h3>
               <p style={{
                 color: "var(--text-primary)",
-                lineHeight: "1.6",
-                fontSize: "1rem"
+                lineHeight: "1.5",
+                fontSize: "0.95rem"
               }}>
-                Manage your bookings and track your rental history.
-              </p>
-            </div>
-
-            <div 
-              onClick={() => handleNavigateTo('/dashboard/user/calendar')}
-              style={{
-                background: "rgba(255, 215, 0, 0.1)",
-                border: "2px solid var(--accent-yellow)",
-                padding: "40px",
-                borderRadius: "20px",
-                boxShadow: "var(--shadow-gold)",
-                transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
-                cursor: "pointer",
-                position: "relative",
-                overflow: "hidden"
-              }}
-              onMouseEnter={(e) => {
-                e.target.style.transform = "translateY(-10px) scale(1.05)";
-                e.target.style.boxShadow = "0 15px 40px rgba(255, 215, 0, 0.6)";
-                e.target.style.borderColor = "var(--bright-yellow)";
-              }}
-              onMouseLeave={(e) => {
-                e.target.style.transform = "translateY(0) scale(1)";
-                e.target.style.boxShadow = "var(--shadow-gold)";
-                e.target.style.borderColor = "var(--accent-yellow)";
-              }}
-            >
-              <div style={{
-                position: "absolute",
-                top: 0,
-                left: 0,
-                right: 0,
-                height: "4px",
-                background: "var(--gold-gradient)",
-                transform: "translateX(-100%)",
-                transition: "transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)"
-              }} />
-              <h3 style={{
-                color: "var(--accent-yellow)",
-                marginBottom: "15px",
-                fontSize: "1.4rem",
-                fontWeight: "700",
-                position: "relative",
-                zIndex: 1
-              }}>
-                📅 Calendar
-              </h3>
-              <p style={{
-                color: "var(--text-primary)",
-                lineHeight: "1.6",
-                fontSize: "1rem"
-              }}>
-                Stay organized with your rental schedule and trips.
+                View your booking history
               </p>
             </div>
 
@@ -265,7 +206,7 @@ function Home() {
               style={{
                 background: "rgba(255, 215, 0, 0.1)",
                 border: "2px solid var(--accent-yellow)",
-                padding: "40px",
+                padding: "35px 25px",
                 borderRadius: "20px",
                 boxShadow: "var(--shadow-gold)",
                 transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
@@ -274,7 +215,7 @@ function Home() {
                 overflow: "hidden"
               }}
               onMouseEnter={(e) => {
-                e.target.style.transform = "translateY(-10px) scale(1.05)";
+                e.target.style.transform = "translateY(-8px) scale(1.05)";
                 e.target.style.boxShadow = "0 15px 40px rgba(255, 215, 0, 0.6)";
                 e.target.style.borderColor = "var(--bright-yellow)";
               }}
@@ -296,60 +237,31 @@ function Home() {
               }} />
               <h3 style={{
                 color: "var(--accent-yellow)",
-                marginBottom: "15px",
-                fontSize: "1.4rem",
+                marginBottom: "12px",
+                fontSize: "1.3rem",
                 fontWeight: "700",
                 position: "relative",
                 zIndex: 1
               }}>
-                ⚙️ Settings
+                � My Profile
               </h3>
               <p style={{
                 color: "var(--text-primary)",
-                lineHeight: "1.6",
-                fontSize: "1rem"
+                lineHeight: "1.5",
+                fontSize: "0.95rem"
               }}>
-                Customize your profile and preferences.
+                Manage your account
               </p>
             </div>
           </div>
 
-          <div style={{ marginTop: "80px" }}>
-            <Button
-              onClick={() => handleNavigateTo('/dashboard/user/rent-car')}
-              style={{
-                background: "var(--gold-gradient)",
-                border: "none",
-                padding: "20px 50px",
-                borderRadius: "50px",
-                fontSize: "1.3rem",
-                fontWeight: "700",
-                cursor: "pointer",
-                transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
-                boxShadow: "var(--shadow-gold)",
-                color: "var(--primary-black)",
-                textTransform: "uppercase",
-                letterSpacing: "1px",
-                height: "60px"
-              }}
-              onMouseEnter={(e) => {
-                e.target.style.transform = "translateY(-3px) scale(1.05)";
-                e.target.style.boxShadow = "0 15px 40px rgba(255, 215, 0, 0.6)";
-              }}
-              onMouseLeave={(e) => {
-                e.target.style.transform = "translateY(0) scale(1)";
-                e.target.style.boxShadow = "var(--shadow-gold)";
-              }}
-            >
-              <CarOutlined style={{ marginRight: "10px" }} /> Rent a Car 🚗
-            </Button>
-            
+          <div style={{ marginTop: "50px" }}>
             <Button
               onClick={handleLogout}
               style={{
                 background: "transparent",
                 border: "2px solid var(--accent-yellow)",
-                padding: "20px 40px",
+                padding: "15px 40px",
                 borderRadius: "50px",
                 fontSize: "1.1rem",
                 fontWeight: "600",
@@ -357,19 +269,17 @@ function Home() {
                 transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
                 color: "var(--accent-yellow)",
                 textTransform: "uppercase",
-                letterSpacing: "1px",
-                marginLeft: "20px",
-                height: "60px"
+                letterSpacing: "1px"
               }}
               onMouseEnter={(e) => {
                 e.target.style.background = "var(--accent-yellow)";
                 e.target.style.color = "var(--primary-black)";
-                e.target.style.transform = "translateY(-3px) scale(1.05)";
+                e.target.style.transform = "translateY(-3px)";
               }}
               onMouseLeave={(e) => {
                 e.target.style.background = "transparent";
                 e.target.style.color = "var(--accent-yellow)";
-                e.target.style.transform = "translateY(0) scale(1)";
+                e.target.style.transform = "translateY(0)";
               }}
             >
               <LogoutOutlined style={{ marginRight: "8px" }} /> Logout
@@ -377,14 +287,6 @@ function Home() {
           </div>
         </div>
       </div>
-
-      <style jsx>{`
-        @keyframes glow {
-          0%, 100% { text-shadow: 0 0 20px rgba(255, 215, 0, 0.5); }
-          50% { text-shadow: 0 0 30px rgba(255, 215, 0, 0.8); }
-        }
-      `}</style>
-
       <Footer />
     </>
   );

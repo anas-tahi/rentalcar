@@ -7,6 +7,7 @@ import {
   Typography,
   Checkbox,
   Col,
+  message
 } from "antd";
 import { Link, useNavigate } from "react-router-dom";
 import ReCAPTCHA from "react-google-recaptcha";
@@ -24,6 +25,7 @@ const LoginForm = ({ setAuth }) => {
   const [capVal, setCapVal] = useState(null);
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [captchaError, setCaptchaError] = useState("");
   const { currentUser , updateUser } = useContext(AuthContext);
 
   const LoginSchema = Yup.object().shape({
@@ -41,12 +43,24 @@ const LoginForm = ({ setAuth }) => {
     },
     validationSchema: LoginSchema,
     onSubmit: async (values, { setSubmitting }) => {
+      // Validate captcha before submitting
+      if (!capVal) {
+        setCaptchaError("Please complete the captcha verification");
+        message.error("Please complete the captcha verification");
+        return;
+      }
+
       try {
         setIsLoading(true);
+        setError("");
+        setCaptchaError("");
+        
         const res = await apiRequest.post("/auth/login", {
           usernameOrEmail: values.usernameOrEmail,
           password: values.password,
+          captcha: capVal
         });
+        
         console.log(res.data.user);
         updateUser(res.data.user);
         setError(""); // Clear error message on successful login
@@ -64,7 +78,16 @@ const LoginForm = ({ setAuth }) => {
         }
       } catch (err) {
         console.error("Login error:", err);
-        setError(err.response?.data?.message || "Failed to log in");
+        const errorMessage = err.response?.data?.message || "Failed to log in";
+        
+        // Handle specific captcha errors
+        if (errorMessage.includes("captcha") || errorMessage.includes("CAPTCHA")) {
+          setCaptchaError("Invalid captcha. Please try again.");
+          message.error("Invalid captcha. Please try again.");
+        } else {
+          setError(errorMessage);
+          message.error(errorMessage);
+        }
       } finally {
         setIsLoading(false);
         setSubmitting(false);
@@ -129,7 +152,9 @@ const LoginForm = ({ setAuth }) => {
           />
         </AntForm.Item>
 
-        <AntForm.Item>
+        <AntForm.Item
+          name="remember"
+        >
           <Checkbox
             onChange={(e) => formik.setFieldValue("remember", e.target.checked)}
             onBlur={formik.handleBlur}
@@ -139,14 +164,29 @@ const LoginForm = ({ setAuth }) => {
           </Checkbox>
         </AntForm.Item>
 
-        <AntForm.Item name="captcha" rules={[{ required: true }]}>
+        <AntForm.Item 
+          name="captcha" 
+          rules={[{ required: true, message: "Please complete the captcha verification!" }]}
+          validateStatus={captchaError ? "error" : ""}
+          help={captchaError}
+        >
           <ReCAPTCHA
             sitekey="6LeumuspAAAAAGhSkPMSKRsRea94OPDOVPuf68xu"
             onChange={(val) => {
               setCapVal(val);
+              setCaptchaError(""); // Clear captcha error when user interacts
+            }}
+            onExpired={() => {
+              setCaptchaError("Captcha expired. Please try again.");
+              message.error("Captcha expired. Please try again.");
+            }}
+            onError={(error) => {
+              setCaptchaError("Captcha error. Please refresh the page.");
+              message.error("Captcha error. Please refresh the page.");
             }}
           />
         </AntForm.Item>
+
         <Box style={{
           padding: "1rem 0rem 2rem 0rem",
         }}>
@@ -167,7 +207,7 @@ const LoginForm = ({ setAuth }) => {
             type="primary"
             htmlType="submit"
             loading={formik.isSubmitting || isLoading}
-            disabled={formik.isSubmitting || !formik.isValid}
+            disabled={formik.isSubmitting || !formik.isValid || !capVal}
             style={{ width: "100%", height: "2.5rem", fontSize: "1.1rem" }}
           >
             {formik.isSubmitting || isLoading ? "Loading..." : "Log in"}
