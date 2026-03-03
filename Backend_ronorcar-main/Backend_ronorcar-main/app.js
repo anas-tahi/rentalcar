@@ -1,6 +1,7 @@
 import dotenv from 'dotenv';
 import express from "express";
 import authRoute from './routes/auth.route.js';
+import authMiddleware from './middlewares/authMiddleware.js';
 import BodyParserMiddleware from "./middlewares/BodyParser.js"
 import loggerMiddleware from './middlewares/logger.js'
 import cookieParser from 'cookie-parser';
@@ -30,6 +31,11 @@ app.use('/api/payment', paymentRoutes); // Payment routes
 app.use('/api', reservationRoutes);
 app.use('/api/cars',carRoutes );
 app.use('/api/users', userRoutes);
+
+// Protected routes example
+app.use('/api/profile', authMiddleware, (req, res) => {
+    res.json({ user: req.user });
+});
 
 // Start the server
 app.listen(PORT, () => {

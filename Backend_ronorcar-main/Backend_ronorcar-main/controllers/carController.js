@@ -1,10 +1,11 @@
-import { carService } from '../lib/database.js';
+import { carService } from '../lib/simpleDatabase.js';
 
 export const getAllCars = async (req, res) => {
   try {
     const cars = await carService.findAll();
     res.json(cars);
   } catch (error) {
+    console.error('Error fetching cars:', error);
     res.status(500).json({ error: 'Error fetching cars' });
   }
 };
@@ -19,6 +20,7 @@ export const getCarById = async (req, res) => {
       res.status(404).json({ error: 'Car not found' });
     }
   } catch (error) {
+    console.error('Error fetching car:', error);
     res.status(500).json({ error: 'Error fetching car' });
   }
 };
@@ -28,6 +30,7 @@ export const createCar = async (req, res) => {
     const newCar = await carService.create(req.body);
     res.status(201).json(newCar);
   } catch (error) {
+    console.error('Error creating car:', error);
     res.status(500).json({ error: 'Error creating car' });
   }
 };
@@ -42,6 +45,7 @@ export const updateCar = async (req, res) => {
       res.status(404).json({ error: 'Car not found' });
     }
   } catch (error) {
+    console.error('Error updating car:', error);
     res.status(500).json({ error: 'Error updating car' });
   }
 };
@@ -51,32 +55,32 @@ export const deleteCar = async (req, res) => {
     const { id } = req.params;
     const deletedCar = await carService.delete(id);
     if (deletedCar) {
-      res.json({ message: 'Car deleted successfully' });
+      res.json(deletedCar);
     } else {
       res.status(404).json({ error: 'Car not found' });
     }
   } catch (error) {
+    console.error('Error deleting car:', error);
     res.status(500).json({ error: 'Error deleting car' });
   }
 };
 
-// Function to get top cars
 export const getTopCars = async (req, res) => {
-    try {
-      const topCars = await carService.getTopCars();
-      res.json(topCars);
-    } catch (error) {
-      res.status(500).json({ error: 'Error fetching top cars' });
-    }
-  };
-  
-// Function to get recommended cars
+  try {
+    const topCars = await carService.getTopCars();
+    res.json(topCars);
+  } catch (error) {
+    console.error('Error fetching top cars:', error);
+    res.status(500).json({ error: 'Error fetching top cars' });
+  }
+};
+
 export const getRecommendedCars = async (req, res) => {
-    try {
-      const recommendedCars = await carService.getRecommendedCars();
-      res.json(recommendedCars);
-    } catch (error) {
-      res.status(500).json({ error: 'Error fetching recommended cars' });
-    }
-  };
-  
+  try {
+    const recommendedCars = await carService.getRecommendedCars();
+    res.json(recommendedCars);
+  } catch (error) {
+    console.error('Error fetching recommended cars:', error);
+    res.status(500).json({ error: 'Error fetching recommended cars' });
+  }
+};

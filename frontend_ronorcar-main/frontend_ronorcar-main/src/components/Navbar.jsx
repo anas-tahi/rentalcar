@@ -218,13 +218,15 @@ function Navbar() {
                         display: "flex",
                         justifyContent: "center",
                         alignItems: "center",
-                        color: "white",
-                        backgroundColor: "rgb(0,0,0,0.2)",
+                        color: "var(--accent-yellow)",
+                        backgroundColor: "rgba(0,0,0,0.8)",
+                        border: "1px solid var(--accent-yellow)",
+                        transition: "all 0.3s ease"
                       }}
                     >
                       {t("My Profile")}{" "}
                       <DownCircleOutlined
-                        style={{ color: "white", fontSize: 15 }}
+                        style={{ color: "var(--accent-yellow)", fontSize: 15 }}
                       />
                     </Button>
                   </Space>
@@ -250,7 +252,7 @@ function Navbar() {
             <Button
               shape="circle"
               icon={
-                <GlobalOutlined style={{ fontSize: "20px", color: "white" }} />
+                <GlobalOutlined style={{ fontSize: "20px", color: "var(--accent-yellow)" }} />
               }
               style={{ backgroundColor: "transparent", border: "none" }}
             />
@@ -259,7 +261,7 @@ function Navbar() {
           {/* mobile */}
           {!currentUser ? (
             <div className="mobile-hamb" onClick={() => setNav(!nav)}>
-              <i className="fa-solid fa-bars" style={{ color: "white" }}></i>
+              <i className="fa-solid fa-bars" style={{ color: "var(--accent-yellow)" }}></i>
             </div>
           ) : (
             ""

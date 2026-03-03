@@ -42,7 +42,7 @@ const CarRentalForm = ({ car }) => {
     setError('');
 
     try {
-      const booking = await bookingsAPI.createBooking({
+      await bookingsAPI.createBooking({
         ...formData,
         startDate: formData.startDate.toISOString(),
         endDate: formData.endDate.toISOString()

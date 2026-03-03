@@ -1,6 +1,8 @@
-import video1 from "../Videos/car1.mp4";
-import video2 from "../Videos/car2.mp4";
-import video3 from "../Videos/car3.mp4";
+// Using placeholder video URLs since video files were removed
+const video1 = "https://sample-videos.com/car1.mp4";
+const video2 = "https://sample-videos.com/car2.mp4";
+const video3 = "https://sample-videos.com/car3.mp4";
+
 import React, { useState, useEffect, useCallback } from "react";
 import PropTypes from "prop-types";
 import LazyLoad from "react-lazyload";

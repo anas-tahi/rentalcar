@@ -90,12 +90,14 @@ const cardsData = [
 
 const CardSlider = () => {
   useEffect(() => {
-    const swiper = new Swiper(".slide-content", {
+    new Swiper(".slide-content", {
       slidesPerView: 3,
       spaceBetween: 25,
       loop: true,
-      centerSlide: true,
-      fade: true,
+      effect: "fade",
+      fadeEffect: {
+        crossFade: true,
+      },
       grabCursor: true,
       pagination: {
         el: ".swiper-pagination",
@@ -110,12 +112,16 @@ const CardSlider = () => {
         0: {
           slidesPerView: 1,
         },
-        520: {
+        768: {
           slidesPerView: 2,
         },
-        950: {
+        1024: {
           slidesPerView: 3,
         },
+      },
+      autoplay: {
+        delay: 2500,
+        disableOnInteraction: false,
       },
     });
   }, []);
@@ -129,7 +135,7 @@ const CardSlider = () => {
               <div className="image-content">
                 <span className="overlay"></span>
                 <div className="card-image">
-                  <img src={card.imagePath} alt="" className="card-img" />
+                  <img src={card.imagePath} alt={`Profile of ${card.name}`} className="card-img" />
                 </div>
               </div>
               <div className="card-content">
