@@ -1,0 +1,49 @@
+/* InfiniteScroll.css */
+
+.app-wrapper {
+  padding: 2rem 0;
+}
+
+.scroller {
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 2rem;
+  width: 100%; /* Set width to window width */
+  margin-top: 2rem;
+  background-color: rgb(239, 247, 255);
+  border-top: 2px solid rgb(200, 227, 255,0.2) ;
+  border-bottom: 2px solid rgb(200, 227, 255,0.2)  ;
+
+}
+
+.scroller__inner {
+  display: flex;
+  align-items: center;
+  animation: scroll 30s linear infinite;
+}
+
+.paused .scroller__inner {
+  animation-play-state: paused;
+}
+
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.scroller__inner img {
+  width: 250px;
+  height: 250px;
+  object-fit: contain;
+  margin: 0 30px;
+}

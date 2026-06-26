@@ -1,0 +1,50 @@
+.sidebar-link {
+  text-decoration: none;
+}
+
+@media (maxwidth: 800px) {
+  .img-profile {
+    width: "30px";
+    height: "30px";
+  }
+}
+.foldUnfold {
+  opacity: 0.7;
+  transition: all 0.5s;
+}
+.foldUnfold:hover {
+  opacity: 1;
+}
+.img-profile {
+  transition: transform 0.5s ease, filter 0.5s ease, border-radius 0.5s ease;
+  will-change: transform;
+  border-radius: 25%;
+}
+.img-profile:hover {
+  transform: scale(1.09);
+  border: 2px solid white;
+  filter: brightness(110%);
+  border-radius: 50%;
+}
+.logout-button-dark {
+  background-color: transparent;
+  color: #fff;
+  border: 1px solid #fff;
+  transition: background-color 0.5s;
+}
+.logout-button-dark:hover {
+  border: none;
+  color: #000000;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+.logout-button-light {
+  background-color: transparent;
+  color: #000000;
+  border: 1px solid #000000;
+  transition: background-color 0.5s;
+}
+.logout-button-light:hover {
+  border: none;
+  color: #ffffff;
+  background-color: rgba(0, 0, 0, 0.8);
+}

@@ -1,0 +1,20 @@
+{
+  "name": "payment-service",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "dependencies": {
+    "@paypal/checkout-server-sdk": "^1.0.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "drivees-rentalcar": "file:../..",
+    "express": "^4.19.2",
+    "stripe": "^15.10.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.2"
+  }
+}
