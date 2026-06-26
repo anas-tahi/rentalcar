@@ -21,7 +21,7 @@ const DashboardAdm = () => {
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/api/users/${currentUser.id}`);
+        const response = await axios.get(`${process.env.REACT_APP_API_URL}/users/${currentUser.id}`);
         setBalance(response.data.balance);
       } catch (error) {
         console.error("Error fetching user data:", error);

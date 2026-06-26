@@ -19,7 +19,7 @@ const ManageCars = () => {
 
   const handleDeleteCar = async (carId) => {
     try {
-      await axios.delete(`http://localhost:5000/api/cars/${carId}`);
+      await axios.delete(`${process.env.REACT_APP_API_URL}/cars/${carId}`);
       setCars(prevCars => prevCars.filter(car => car.id !== carId));
       message.success("Car deleted successfully!");
     } catch (error) {
@@ -36,7 +36,7 @@ const ManageCars = () => {
 
   const handleSaveEdit = async () => {
     try {
-      await axios.put(`http://localhost:5000/api/cars/${editingCar.id}`, carDetails);
+      await axios.put(`${process.env.REACT_APP_API_URL}/cars/${editingCar.id}`, carDetails);
       setCars(prevCars => prevCars.map(car => car.id === editingCar.id ? { ...car, ...carDetails } : car));
       setEditModalVisible(false);
       message.success("Car details updated successfully!");

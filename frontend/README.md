@@ -44,7 +44,7 @@ Ensure you have the following installed:
 
 3. **Create a `.env` file** for environment-specific configurations:
    ```env
-   REACT_APP_API_URL=http://localhost:5000/api
+   REACT_APP_API_URL=${process.env.REACT_APP_API_URL}
    ```
 
 4. **Start the development server**:

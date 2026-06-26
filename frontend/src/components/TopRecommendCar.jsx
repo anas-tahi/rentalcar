@@ -12,7 +12,7 @@ const TopRecommendCar = () => {
   useEffect(() => {
     const fetchTopCars = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/cars/topCars");
+        const response = await axios.get("${process.env.REACT_APP_API_URL}/cars/topCars");
         setTopCars(response.data);
         setIsLoadingTop(false);
       } catch (error) {
@@ -22,7 +22,7 @@ const TopRecommendCar = () => {
 
     const fetchRecommendedCars = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/cars/recommendedCars");
+        const response = await axios.get("${process.env.REACT_APP_API_URL}/cars/recommendedCars");
         setRecommendedCars(response.data);
         console.log(response.data);
         setIsLoadingRecommended(false);

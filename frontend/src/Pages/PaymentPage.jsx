@@ -61,7 +61,7 @@ const PaymentPage = () => {
         };
 
         const response = await axios.post(
-          "http://localhost:5000/api/reservations",
+          "${process.env.REACT_APP_API_URL}/reservations",
           reservationData
         );
         message.success("Reservation successful!");

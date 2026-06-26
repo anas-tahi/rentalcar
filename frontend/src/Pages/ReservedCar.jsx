@@ -14,7 +14,7 @@ const ReservedCar = () => {
   useEffect(() => {
     const fetchReservations = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/api/reservations`);
+        const response = await axios.get(`${process.env.REACT_APP_API_URL}/reservations`);
         const reservations = response.data;
 
         // Create a map to associate reservations with cars
@@ -36,7 +36,7 @@ const ReservedCar = () => {
 
   const handleDeleteReservation = async (reservationId) => {
     try {
-      await axios.delete(`http://localhost:5000/api/reservations/${reservationId}`);
+      await axios.delete(`${process.env.REACT_APP_API_URL}/reservations/${reservationId}`);
       setReservedCars(prevCars => prevCars.filter(car => car.reservationId !== reservationId));
       message.success("Reservation deleted successfully!");
     } catch (error) {
