@@ -4,7 +4,7 @@ const API_URL = process.env.REACT_APP_API_URL || 'https://drivees-gateway.onrend
 
 const apiRequest = axios.create({
   baseURL: API_URL,
-  timeout: 10000,
+  timeout: 60000,
 });
 
 // Auto-attach token from localStorage
