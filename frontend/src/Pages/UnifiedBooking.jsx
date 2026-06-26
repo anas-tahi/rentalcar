@@ -38,7 +38,7 @@ import {
 import dayjs from 'dayjs';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import '../dist/styles.css';
+import '../styles/styles.scss';
 
 const { Title, Text, Paragraph } = Typography;
 const { Option } = Select;

@@ -8,7 +8,7 @@ import CarImg4 from "../images/cars-big/bmw-box.png";
 import CarImg5 from "../images/cars-big/benz-box.png";
 import CarImg6 from "../images/cars-big/passat-box.png";
 import { Link } from "react-router-dom";
-import "../dist/styles.css";
+import "../styles/styles.scss";
 function Models() {
   return (
     <>
