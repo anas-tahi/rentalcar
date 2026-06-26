@@ -29,7 +29,6 @@ import {
 } from '@ant-design/icons';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import '../styles/styles.scss';
 
 const { Title, Text } = Typography;
 const { Option } = Select;
