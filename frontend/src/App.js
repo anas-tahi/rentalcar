@@ -4,7 +4,7 @@ import { useLocation } from 'react-router-dom';
 import Router from './routes/Router';
 import './components/i18n';
 import './styles/animations.css';
-import '../styles/styles.css';
+import '../styles/styles.scss';
 
 // Preloader
 function Preloader() {
