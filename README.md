@@ -2,6 +2,20 @@
 
 A full-stack car rental management platform built with **React**, **Node.js**, and a **microservices** architecture. Users can browse cars, make reservations, and pay via PayPal or Stripe. Admins get a full dashboard with analytics, car management, and booking oversight.
 
+### 🌐 [Live Demo → drivees-frontend.onrender.com](https://drivees-frontend.onrender.com)
+
+> ⚠️ Free tier — services may take ~30 seconds to wake up on first visit.
+
+---
+
+## 📸 Screenshots
+
+### Home
+![DriveES Home](https://raw.githubusercontent.com/anas-tahi/rentalcar/main/screenshots/home.png)
+
+### Fleet
+![DriveES Fleet](https://raw.githubusercontent.com/anas-tahi/rentalcar/main/screenshots/fleet.png)
+
 ---
 
 ## ✨ Features
@@ -76,7 +90,7 @@ Open [http://localhost:3000](http://localhost:3000)
 
 ---
 
-### Option C — Manual (5 terminals)
+### Option C — Manual (6 terminals)
 
 <details>
 <summary>Click to expand</summary>
@@ -117,7 +131,7 @@ Copy `.env.example` to `.env` and fill in:
 | `PAYPAL_CLIENT_SECRET` | PayPal sandbox client secret |
 | `STRIPE_SECRET_KEY` | Stripe test secret key (optional) |
 
-> 💡 Get a free MongoDB cluster at [cloud.mongodb.com](https://cloud.mongodb.com)  
+> 💡 Get a free MongoDB cluster at [cloud.mongodb.com](https://cloud.mongodb.com)
 > 💡 Get PayPal sandbox keys at [developer.paypal.com](https://developer.paypal.com/dashboard/)
 
 ---
@@ -179,6 +193,7 @@ rentalcar/
 ├── .env.example              ← copy to .env
 ├── docker-compose.yml        ← run everything with Docker
 ├── package.json              ← root scripts (npm run dev / install:all)
+├── screenshots/              ← README screenshots
 │
 ├── backend/
 │   ├── api-gateway/          ← Single entry point (port 5000)
@@ -210,6 +225,8 @@ rentalcar/
 **Database:** MongoDB Atlas (auth), in-memory store (cars, bookings)
 
 **Payments:** PayPal Checkout SDK, Stripe
+
+**Deployment:** Render (6 services)
 
 ---
 
